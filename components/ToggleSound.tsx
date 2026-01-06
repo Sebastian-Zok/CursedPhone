@@ -1,4 +1,4 @@
-import { IconButton } from '@chakra-ui/button'
+import { IconButton } from '@chakra-ui/react'
 import { SOUNDS, useSounds } from 'contexts/Sounds'
 import React from 'react'
 import { MdVolumeOff, MdVolumeUp } from 'react-icons/md'

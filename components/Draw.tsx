@@ -201,7 +201,7 @@ export function Draw({ timeExpired, saveReply, storagePath, prompt }: Props) {
               backgroundColor={value}
               height={10}
               borderRadius="md"
-              disabled={isSaving || currentTool === TOOL.ERASER}
+              isDisabled={isSaving || currentTool === TOOL.ERASER}
               colorScheme="transparent"
               padding="0"
             >
@@ -255,7 +255,7 @@ export function Draw({ timeExpired, saveReply, storagePath, prompt }: Props) {
                 }}
                 variant={currentLineWidth === value ? 'solid' : 'ghost'}
                 colorScheme="primary"
-                disabled={isSaving}
+                isDisabled={isSaving}
                 padding="1"
               >
                 <Box
@@ -280,7 +280,7 @@ export function Draw({ timeExpired, saveReply, storagePath, prompt }: Props) {
               max={1}
               step={0.1}
               onChangeEnd={setAlpha}
-              disabled={isSaving || currentTool === TOOL.ERASER}
+              isDisabled={isSaving || currentTool === TOOL.ERASER}
               width="40"
             >
               <SliderTrack>
@@ -292,7 +292,7 @@ export function Draw({ timeExpired, saveReply, storagePath, prompt }: Props) {
           <Button
             colorScheme="primary"
             onClick={submitReply}
-            disabled={!canSubmit || timeExpired}
+            isDisabled={!canSubmit || timeExpired}
             isLoading={isSaving}
           >
             Done
@@ -314,7 +314,7 @@ export function Draw({ timeExpired, saveReply, storagePath, prompt }: Props) {
           }}
           variant={currentTool === TOOL.PENCIL ? 'solid' : 'ghost'}
           colorScheme="primary"
-          disabled={isSaving}
+          isDisabled={isSaving}
           ref={initialFocusRef}
         >
           Pencil
@@ -330,7 +330,7 @@ export function Draw({ timeExpired, saveReply, storagePath, prompt }: Props) {
           }}
           variant={currentTool === TOOL.ERASER ? 'solid' : 'ghost'}
           colorScheme="primary"
-          disabled={isSaving}
+          isDisabled={isSaving}
         >
           Eraser
         </Button>
@@ -348,7 +348,7 @@ export function Draw({ timeExpired, saveReply, storagePath, prompt }: Props) {
           }}
           variant={currentTool === TOOL.BUCKET ? 'solid' : 'ghost'}
           colorScheme="primary"
-          disabled={isSaving}
+          isDisabled={isSaving}
         >
           Bucket
         </Button>
@@ -357,7 +357,7 @@ export function Draw({ timeExpired, saveReply, storagePath, prompt }: Props) {
           onClick={undo}
           variant="ghost"
           colorScheme="primary"
-          disabled={
+          isDisabled={
             isSaving || (canvasRef.current && !canvasRef.current.canUndo())
           }
         >
@@ -368,7 +368,7 @@ export function Draw({ timeExpired, saveReply, storagePath, prompt }: Props) {
           onClick={redo}
           variant="ghost"
           colorScheme="primary"
-          disabled={
+          isDisabled={
             isSaving || (canvasRef.current && !canvasRef.current.canRedo())
           }
         >
@@ -379,7 +379,7 @@ export function Draw({ timeExpired, saveReply, storagePath, prompt }: Props) {
           onClick={clearCanvas}
           variant="ghost"
           colorScheme="primary"
-          disabled={isSaving}
+          isDisabled={isSaving}
         >
           Clear
         </Button>
