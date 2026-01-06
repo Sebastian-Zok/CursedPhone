@@ -126,6 +126,11 @@ export function Playing({ room, player, players, gameState }: Props) {
             key={gameState.step}
             timeExpired={timeExpired}
             saveReply={saveReply}
+            prompt={
+              previousReply?.type === RESULT_TYPE.SENTENCE
+                ? previousReply.value
+                : ''
+            }
             storagePath={`${room.id}/${player.id}/${gameState.step + 1}`}
           />
         ) : (

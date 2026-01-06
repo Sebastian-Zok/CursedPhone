@@ -68,9 +68,10 @@ type Props = {
   timeExpired: boolean
   saveReply: (value: string) => Promise<void>
   storagePath: string
+  prompt: string
 }
 
-export function Draw({ timeExpired, saveReply, storagePath }: Props) {
+export function Draw({ timeExpired, saveReply, storagePath, prompt }: Props) {
   const { showToast } = useToasts()
   const [currentTool, setCurrentTool] = useState(TOOL.PENCIL)
   const [currentColor, setCurrentColor] = useState(COLORS[0].value)
@@ -106,9 +107,40 @@ export function Draw({ timeExpired, saveReply, storagePath }: Props) {
 
       const imgURL = canvasRef.current.getDataURL()
 
+      let transformedImageDataUrl: string | null = null
+
+      try {
+        const response = await fetch('/api/transform-picture', {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json',
+          },
+          body: JSON.stringify({
+            description: prompt,
+            imageDataUrl: imgURL,
+          }),
+        })
+
+        if (response.ok) {
+          const payload = (await response.json()) as {
+            imageDataUrl?: string
+          }
+
+          if (payload?.imageDataUrl) {
+            transformedImageDataUrl = payload.imageDataUrl
+          }
+        } else {
+          console.error('Transform API error', await response.text())
+        }
+      } catch (error) {
+        console.error(error)
+      }
+
+      const imageToUploadDataUrl = transformedImageDataUrl || imgURL
+
       const file = await storage
         .child(storagePath)
-        .putString(imgURL, 'data_url')
+        .putString(imageToUploadDataUrl, 'data_url')
 
       const drawUrl = await file.ref.getDownloadURL()
 

@@ -25,19 +25,17 @@ export function Layout({ children }: Props) {
             alignItems="center"
             justifyContent="space-between"
           >
-            <NextLink href="/" passHref>
-              <Link>
-                <Stack
-                  spacing="2"
-                  direction="row"
-                  alignItems="center"
-                  justifyContent="center"
-                >
-                  <Garlic width="6" height="6" />
-                  <Text>Garlic phone</Text>
-                </Stack>
-              </Link>
-            </NextLink>
+            <Link as={NextLink} href="/">
+              <Stack
+                spacing="2"
+                direction="row"
+                alignItems="center"
+                justifyContent="center"
+              >
+                <Garlic width="6" height="6" />
+                <Text>Garlic phone</Text>
+              </Stack>
+            </Link>
             <ToggleSound />
           </Stack>
         </Container>

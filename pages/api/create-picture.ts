@@ -1,4 +1,4 @@
-import { createCanvas, loadImage, registerFont } from 'canvas'
+import { createCanvas, loadImage, GlobalFonts } from '@napi-rs/canvas'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import path from 'path'
 import { CANVAS_HEIGHT, CANVAS_WIDTH } from 'utils/constants'
@@ -22,12 +22,14 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const GIF_WIDTH = CANVAS_WIDTH * 1.25
     const GIT_HEIGHT = CANVAS_HEIGHT * 1.4
 
-    registerFont(path.resolve('./public/fonts/Inter-Regular.ttf'), {
-      family: 'Inter',
-    })
-    registerFont(path.resolve('./public/fonts/Inter-Bold.ttf'), {
-      family: 'Inter Bold',
-    })
+    GlobalFonts.registerFromPath(
+      path.resolve('./public/fonts/Inter-Regular.ttf'),
+      'Inter'
+    )
+    GlobalFonts.registerFromPath(
+      path.resolve('./public/fonts/Inter-Bold.ttf'),
+      'Inter Bold'
+    )
 
     const canvas = createCanvas(GIF_WIDTH, GIT_HEIGHT)
     const ctx = canvas.getContext('2d')
@@ -81,7 +83,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     await generatePicture()
 
-    res.send(canvas.toBuffer())
+    res.setHeader('Content-Type', 'image/png')
+    res.send(canvas.toBuffer('image/png'))
   } catch (error) {
     console.error(error)
 

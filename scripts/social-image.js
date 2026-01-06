@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-const Canvas = require('canvas')
+const Canvas = require('@napi-rs/canvas')
 const fs = require('fs')
 const path = require('path')
 
@@ -8,12 +8,14 @@ async function generateSocialImage() {
     const GIF_WIDTH = 1200
     const GIT_HEIGHT = 630
 
-    Canvas.registerFont(path.resolve('./public/fonts/Inter-Regular.ttf'), {
-      family: 'Inter',
-    })
-    Canvas.registerFont(path.resolve('./public/fonts/Inter-Bold.ttf'), {
-      family: 'Inter Bold',
-    })
+    Canvas.GlobalFonts.registerFromPath(
+      path.resolve('./public/fonts/Inter-Regular.ttf'),
+      'Inter'
+    )
+    Canvas.GlobalFonts.registerFromPath(
+      path.resolve('./public/fonts/Inter-Bold.ttf'),
+      'Inter Bold'
+    )
 
     const canvas = Canvas.createCanvas(GIF_WIDTH, GIT_HEIGHT)
     const ctx = canvas.getContext('2d')

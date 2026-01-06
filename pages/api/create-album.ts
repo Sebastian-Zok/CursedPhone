@@ -1,4 +1,4 @@
-import { createCanvas, loadImage, registerFont } from 'canvas'
+import { createCanvas, loadImage, GlobalFonts } from '@napi-rs/canvas'
 import GIFEncoder from 'gif-encoder-2'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import path from 'path'
@@ -22,12 +22,14 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     encoder.setDelay(3000)
     encoder.start()
 
-    registerFont(path.resolve('./public/fonts/Inter-Regular.ttf'), {
-      family: 'Inter',
-    })
-    registerFont(path.resolve('./public/fonts/Inter-Bold.ttf'), {
-      family: 'Inter Bold',
-    })
+    GlobalFonts.registerFromPath(
+      path.resolve('./public/fonts/Inter-Regular.ttf'),
+      'Inter'
+    )
+    GlobalFonts.registerFromPath(
+      path.resolve('./public/fonts/Inter-Bold.ttf'),
+      'Inter Bold'
+    )
 
     const canvas = createCanvas(GIF_WIDTH, GIT_HEIGHT)
     const ctx = canvas.getContext('2d')

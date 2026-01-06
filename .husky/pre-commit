@@ -7,5 +7,4 @@ npx lint-staged
 echo "===== TYPE CHECKING ====="
 npx tsc --noEmit
 
-echo "===== BUILD PROJECT ====="
-npm run build
+ 

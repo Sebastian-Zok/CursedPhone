@@ -3,7 +3,13 @@ import { Step1, Step2, Step3, Step4, Step5 } from 'components/Icons'
 import { Information } from 'components/Information'
 import React, { useState } from 'react'
 
-const CONTENT = [
+type HowToPlaySlide = {
+  icon: React.ReactNode
+  title: string
+  description: string
+}
+
+const CONTENT: HowToPlaySlide[] = [
   {
     icon: <Step1 width="20" height="20" />,
     title: 'Calling is better',

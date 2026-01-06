@@ -13,16 +13,25 @@ const firebaseConfig = {
   measurementId: process.env.NEXT_PUBLIC_MEASUREMENTID,
 }
 
-let firebaseApp: firebase.app.App
+const isFirebaseConfigured = Boolean(
+  firebaseConfig.apiKey &&
+    firebaseConfig.authDomain &&
+    firebaseConfig.projectId &&
+    firebaseConfig.storageBucket
+)
 
-if (firebase.apps.length) {
-  firebaseApp = firebase.apps[0]
-} else {
-  firebaseApp = firebase.initializeApp(firebaseConfig)
+let firebaseApp: firebase.app.App | null = null
+
+if (isFirebaseConfigured) {
+  if (firebase.apps.length) {
+    firebaseApp = firebase.apps[0]
+  } else {
+    firebaseApp = firebase.initializeApp(firebaseConfig)
+  }
 }
 
-const firestore = firebaseApp.firestore()
-const storage = firebaseApp.storage().ref()
+const firestore = firebaseApp ? firebaseApp.firestore() : (null as any)
+const storage = firebaseApp ? firebaseApp.storage().ref() : (null as any)
 
 const { FieldValue, Timestamp } = firebase.firestore
 
