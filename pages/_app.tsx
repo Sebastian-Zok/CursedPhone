@@ -18,7 +18,7 @@ function App({ Component, pageProps }: AppProps) {
     <>
       <DefaultSeo {...SEO} />
       <Head>
-        <title>Garlic phone</title>
+        <title>Cursed phone</title>
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="viewport"

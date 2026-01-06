@@ -37,13 +37,13 @@ async function generateSocialImage() {
         ctx.font = `24px 'Inter'`
         ctx.fillStyle = '#b8c1ec'
         ctx.textAlign = 'center'
-        ctx.fillText('garlicphone.vercel.app', GIF_WIDTH / 2, GIT_HEIGHT - 40)
+        ctx.fillText('cursedphone.vercel.app', GIF_WIDTH / 2, GIT_HEIGHT - 40)
 
         /* center text */
         ctx.font = `96px 'Inter Bold'`
         ctx.fillStyle = '#eebbc3'
 
-        ctx.fillText('Garlic phone', GIF_WIDTH / 2, GIT_HEIGHT / 2)
+        ctx.fillText('Cursed phone', GIF_WIDTH / 2, GIT_HEIGHT / 2)
 
         resolve()
       })

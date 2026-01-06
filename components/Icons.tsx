@@ -3,8 +3,8 @@ import React from 'react'
 
 /* Logo */
 
-export const Garlic = createIcon({
-  displayName: 'Garlic',
+export const Cursed = createIcon({
+  displayName: 'Cursed',
   viewBox: '0 0 36 36',
   path: (
     <>

@@ -14,7 +14,7 @@ class MyDocument extends Document {
               async
               defer
               src="https://beampipe.io/js/tracker.js"
-              data-beampipe-domain="garlicphone.vercel.app"
+              data-beampipe-domain="cursedphone.vercel.app"
             />
           )}
         </body>

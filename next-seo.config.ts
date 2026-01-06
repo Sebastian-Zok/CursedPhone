@@ -1,8 +1,8 @@
 import { NextSeoProps } from 'next-seo'
 
-const TITLE = 'Garlic phone'
-const DESCRIPTION = 'Garlic phone'
-const BASE_URL = 'https://garlicphone.vercel.app'
+const TITLE = 'Cursed phone'
+const DESCRIPTION = 'Cursed phone'
+const BASE_URL = 'https://cursedphone.vercel.app'
 
 const SEO: NextSeoProps = {
   title: TITLE,

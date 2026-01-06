@@ -1,5 +1,5 @@
 import { Box, Container, Link, Stack, Text } from '@chakra-ui/react'
-import { Garlic } from 'components/Icons'
+import { Cursed } from 'components/Icons'
 import NextLink from 'next/link'
 import React, { ReactNode } from 'react'
 import { CONTAINER_WIDTH, LAYOUT_WIDTH } from 'utils/constants'
@@ -32,8 +32,8 @@ export function Layout({ children }: Props) {
                 alignItems="center"
                 justifyContent="center"
               >
-                <Garlic width="6" height="6" />
-                <Text>Garlic phone</Text>
+                <Cursed width="6" height="6" />
+                <Text>Cursed phone</Text>
               </Stack>
             </Link>
             <ToggleSound />
